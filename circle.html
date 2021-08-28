@@ -193,7 +193,7 @@
             for(var i=0; i < circles.length; i++){
             circles[i].fillColor.hue += 1;      #color changes
             circles[i].scale(.9);       #shrinking of circle
-            if(circles[i].area < 1){        #if area of circle id less than 1 then remove that circle
+            if(circles[i].area < 1){        #if area of circle is less than 1 then remove that circle
                 circles[i].remove(); 
                 circles.splice(i, 1);
                 console.log(circles);
