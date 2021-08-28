@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Circles</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.11/paper-full.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.12.11/paper-full.js"></script>    #for animation
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.js"></script>    #for sounds
        <style>
-      canvas{
+      canvas{       #base where animations will be created
         width:100%;
         height: 100%;
         background: black;
@@ -166,7 +166,7 @@
             n: {
                 sound: new Howl({
                     src: ['sounds/zig-zag.mp3']
-                }),
+                }), 
                 color: '#8e44ad'
             },
             m: {
@@ -180,20 +180,20 @@
         var circles = [];
         function onKeyDown(event) {
            if(keyData[event.key]){
-           var maxPoint = new Point(view.size.width, view.size.height);
-           var randomPoint = Point.random();
+           var maxPoint = new Point(view.size.width, view.size.height);     #range of point
+           var randomPoint = Point.random();        #random point
            var point = maxPoint * randomPoint; 
-           var newCircle = new Path.Circle(point, 500)
+           var newCircle = new Path.Circle(point, 500)      #circle radius = 500
            newCircle.fillColor = keyData[event.key].color; 
            keyData[event.key].sound.play();
-           circles.push(newCircle);
+           circles.push(newCircle);     #pushing every circle to 'circles' array 
         }
     }
             function onFrame(event) {
             for(var i=0; i < circles.length; i++){
-            circles[i].fillColor.hue += 1;
-            circles[i].scale(.9);
-            if(circles[i].area < 1){
+            circles[i].fillColor.hue += 1;      #color changes
+            circles[i].scale(.9);       #shrinking of circle
+            if(circles[i].area < 1){        #if area of circle id less than 1 then remove that circle
                 circles[i].remove(); 
                 circles.splice(i, 1);
                 console.log(circles);
